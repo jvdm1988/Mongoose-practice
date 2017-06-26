@@ -5,12 +5,17 @@ mongoose.connect("mongodb://localhost/snapcat");
 //                                        |
 //                                  name of database
 
+const Schema = mongoose.Schema;
+
+const catSchema = new Schema ({
+  name: { type: String, required: true},
+  breed:{ type: String},
+  age:  { type: Number, default: 0},
+});
+
 const Cat = mongoose.model(     // constructor function "C"
   "Cat",            // 1st arg = Name of the model
-  { name: String,   // 2nd arg = Schema object of the model
-    breed: String,
-    age: Number
-  }
+  catSchema         // 2nd arg = Schema object of the model
 );
 
 
